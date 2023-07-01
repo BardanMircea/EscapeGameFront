@@ -29,6 +29,8 @@ const ConnexionView = () => {
           alignItems: "center",
         }}
       >
+        <Typography component="h1" variant="h5"></Typography>
+
         <Typography component="h1" variant="h5">
           Connexion
         </Typography>
