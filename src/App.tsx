@@ -9,9 +9,9 @@ function App() {
   return (
     <>
       <Header />
-      {/* <HomePageController/> */}
+      <HomePageController/>
       {/* <ConnexionView /> */}
-      <InscriptionPageController/>
+      {/* <InscriptionPageController/> */}
       {/* <Footer /> */}
     </>
   );
