@@ -18,6 +18,7 @@ const HomePageController = () => {
         // if the response's status is 200, transform it into json format and set the state of our salles to it's value 
         const sallesJson = await sallesArrayResponse.json()
         setSalles(sallesJson)
+        console.log(sallesJson)
     }
 
     // useEffect to call the getSalles method at every rerender
@@ -29,9 +30,9 @@ const HomePageController = () => {
         <>
             <h1>Escape Game Page d'Accueil</h1>
             <h2>Voici nos Escape Rooms</h2>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
                 {salles.map((salle) => (
-                    <Grid item xs={2} sm={4} md={4} key={salle.id}>
+                    <Grid item xs={2} sm={4} md={4} key={salle._id}>
                          <Card sx={{ maxWidth: 345 }}>
                             <CardActionArea>
                                 <CardMedia
