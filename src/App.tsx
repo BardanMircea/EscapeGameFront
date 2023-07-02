@@ -1,19 +1,16 @@
-
 import "./App.css";
-import Header from "../components/Header";
-import ConnexionView from "./views/connexion/ConnexionView";
-
-import React from "react";
-import Footer from "../components/Footer";
+import Header from "./layouts/HeaderEtFooter/Header";
+import ConnexionView from "./layouts/ConnexionPage/ConnexionPageView";
+import Footer from "./layouts/HeaderEtFooter/Footer";
+import InscriptionPageController from "./layouts/InscriptionPage/InscriptionPageController";
 
 function App() {
   return (
     <>
 
       <Header />
-      <ConnexionView />
-
-      {/* <Header /> */}
+      {/* <ConnexionView /> */}
+      <InscriptionPageController/>
       <Footer />
     </>
   );
