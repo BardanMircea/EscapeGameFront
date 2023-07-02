@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SalleModel from "../../models/SalleModel";
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Height } from "@mui/icons-material";
 
 const HomePageController = () => {
 
@@ -29,11 +30,11 @@ const HomePageController = () => {
     return(
         <>
             <h1>Escape Game Page d'Accueil</h1>
-            <h2>Voici nos Escape Rooms</h2>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+            <h2>Nos Escape Rooms vous attendent</h2>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12}} >
                 {salles.map((salle) => (
-                    <Grid item xs={2} sm={4} md={4} key={salle._id}>
-                         <Card sx={{ maxWidth: 345 }}>
+                    <Grid item xs={2} sm={4} md={4} key={salle._id} sx={{ display: 'flex', justifyContent: 'center'}}>
+                         <Card sx={{ maxWidth: 345, width: 345}} >
                             <CardActionArea>
                                 <CardMedia
                                 component="img"
@@ -46,7 +47,7 @@ const HomePageController = () => {
                                     {salle.nom}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary"
-                                        sx={{ overflow: "hidden", textOverflow: "ellipsis", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical" }}
+                                        sx={{ overflow: "hidden", textOverflow: "ellipsis", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", height:35}}
                                     >
                                         {salle.description}    
                                     </Typography>
