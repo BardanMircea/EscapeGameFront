@@ -1,8 +1,5 @@
-import React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -20,7 +17,8 @@ const ConnexionView = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+
+      <Container component="main" maxWidth="xs">
       <Box
         sx={{
           marginTop: 8,
@@ -69,13 +67,15 @@ const ConnexionView = () => {
             </Grid>
             <Grid item>
               <Link href="#" variant="body2">
-                {"Pas de comptet? Inscrivez-vous"}
+                {"Pas de compte? Inscrivez-vous"}
               </Link>
             </Grid>
           </Grid>
         </Box>
       </Box>
     </Container>
+
+    
   );
 };
 
