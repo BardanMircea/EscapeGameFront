@@ -1,4 +1,5 @@
 import "./App.css";
+
 import Header from "./layouts/HeaderEtFooter/Header";
 import ConnexionView from "./layouts/ConnexionPage/ConnexionPageView";
 import Footer from "./layouts/HeaderEtFooter/Footer";
@@ -8,6 +9,7 @@ import HomePageController from "./layouts/HomePage/HomePageController";
 function App() {
   return (
     <>
+
       <Header />
       <HomePageController />
       {/* <ConnexionView /> */}
