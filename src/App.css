@@ -57,8 +57,3 @@ footer {
   min-height: calc(100vh - 100px - 164px); /* Soustrait la hauteur du footer */
 }
 
-.inscription-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
