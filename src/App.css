@@ -2,6 +2,21 @@ body {
   margin: 0;
 }
 
+h1{
+  text-align: center;
+}
+
+h2{
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.lock-icon{
+  height: 40px;
+  margin-bottom: 10px;
+}
+
 .Contenair {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -20,4 +35,10 @@ Footer {
   height: 200px;
   width: 100%;
   background-color: rgb(49, 44, 44);
+}
+
+.inscription-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
