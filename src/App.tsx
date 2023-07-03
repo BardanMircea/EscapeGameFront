@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <Header/>
+      <div className="content">
       <Router>
         <Routes>
           <Route path="/" element={<HomePageController />} />
@@ -18,6 +19,8 @@ function App() {
           <Route path="/signup" element={<InscriptionPageController />} />
         </Routes> 
       </Router>
+      </div>
+      
       <Footer/>
     </>
   );
