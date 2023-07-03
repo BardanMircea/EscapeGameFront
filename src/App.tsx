@@ -1,18 +1,18 @@
 import "./App.css";
-import Header from "../components/Header";
-import ConnexionView from "./views/connexion/ConnexionView";
-
-import React from "react";
-import Footer from "../components/Footer";
+import Header from "./layouts/HeaderEtFooter/Header";
+import ConnexionView from "./layouts/ConnexionPage/ConnexionPageView";
+import Footer from "./layouts/HeaderEtFooter/Footer";
+import InscriptionPageController from "./layouts/InscriptionPage/InscriptionPageController";
+import HomePageController from "./layouts/HomePage/HomePageController";
 
 function App() {
   return (
     <>
       <Header />
-      <ConnexionView />
-
-      {/* <Header /> */}
-      <Footer />
+      <HomePageController />
+      {/* <ConnexionView /> */}
+      {/* <InscriptionPageController/> */}
+      {/* <Footer /> */}
     </>
   );
 }
