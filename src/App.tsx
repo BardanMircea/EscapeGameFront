@@ -5,16 +5,17 @@ import ConnexionView from "./layouts/ConnexionPage/ConnexionPageView";
 import Footer from "./layouts/HeaderEtFooter/Footer";
 import InscriptionPageController from "./layouts/InscriptionPage/InscriptionPageController";
 import HomePageController from "./layouts/HomePage/HomePageController";
+import HistoriqueView from "./layouts/HistoriquePage/HistoriquePageController";
 
 function App() {
   return (
     <>
-
       <Header />
-      <HomePageController />
+      {/* <HomePageController /> */}
       {/* <ConnexionView /> */}
       {/* <InscriptionPageController/> */}
-      {/* <Footer /> */}
+      <HistoriqueView />
+      <Footer />
     </>
   );
 }
