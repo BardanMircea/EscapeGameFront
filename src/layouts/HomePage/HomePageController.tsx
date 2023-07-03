@@ -18,7 +18,6 @@ const HomePageController = () => {
         // if the response's status is 200, transform it into json format and set the state of our salles to it's value 
         const sallesJson = await sallesArrayResponse.json()
         setSalles(sallesJson)
-        console.log(sallesJson)
     }
 
     // useEffect to call the getSalles method at every rerender
