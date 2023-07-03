@@ -1,4 +1,3 @@
-import React from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -17,9 +16,9 @@ const Footer = () => {
         </div>
 
         <div className="center">
-          <p>
-            55 Rue du Faubourg Saint-Honoré <p></p>75008 Paris
-          </p>
+          <p>55 Rue du Faubourg Saint-Honoré</p>
+          <p>75008 Paris</p>
+          
           <p>+ 33 1 42 92 81 00</p>
           <p>contact@escape-game.com</p>
         </div>
