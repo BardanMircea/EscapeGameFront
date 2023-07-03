@@ -1,18 +1,25 @@
-body {
+/* body {
   margin: 0;
+} */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
-h2{
+h2 {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.lock-icon{
+.lock-icon {
   height: 40px;
   margin-bottom: 10px;
 }
@@ -28,12 +35,26 @@ h2{
   text-align: center;
 }
 
-Footer {
+/* Footer {
   color: white;
-  position: relative;
-  /* bottom: 0; */
+  position: sticky;
+  bottom: 0;
+  height: 200px;
   width: 100%;
   background-color: rgb(49, 44, 44);
+} */
+
+footer {
+  color: white;
+  position: sticky;
+  top: calc(100vh - 200px); /* La hauteur du footer */
+  height: 200px;
+  width: 100%;
+  background-color: rgb(49, 44, 44);
+}
+
+.content {
+  min-height: calc(100vh - 100px - 164px); /* Soustrait la hauteur du footer */
 }
 
 .inscription-logo {

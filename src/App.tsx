@@ -9,12 +9,13 @@ import HomePageController from "./layouts/HomePage/HomePageController";
 function App() {
   return (
     <>
-
       <Header />
-      <HomePageController/>
-      {/* <ConnexionView /> */}
-      {/* <InscriptionPageController/> */}
-      {/* <Footer /> */}
+      <div className="content">
+        <HomePageController />
+        {/* <ConnexionView /> */}
+        {/* <InscriptionPageController/> */}
+      </div>
+      <Footer />
     </>
   );
 }
