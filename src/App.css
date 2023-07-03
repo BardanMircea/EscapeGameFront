@@ -35,9 +35,3 @@ Footer {
   width: 100%;
   background-color: rgb(49, 44, 44);
 }
-
-.inscription-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}

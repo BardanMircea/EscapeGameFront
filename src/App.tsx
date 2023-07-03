@@ -18,9 +18,8 @@ function App() {
           <Route path="/signup" element={<InscriptionPageController />} />
         </Routes> 
       </Router>
-      <Footer />
+      <Footer/>
     </>
   );
 }
-
 export default App;
