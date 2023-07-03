@@ -30,8 +30,8 @@ h2{
 
 Footer {
   color: white;
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  /* bottom: 0; */
   width: 100%;
   background-color: rgb(49, 44, 44);
 }
