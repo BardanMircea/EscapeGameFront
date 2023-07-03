@@ -10,15 +10,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Header />
-
-      <div className="content">
-        <HomePageController />
-        {/* <ConnexionView /> */}
-        {/* <InscriptionPageController/> */}
-      </div>
-
-      <Footer />
+      <Header/>
+          <div className="content">
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePageController />} />
+          <Route path="/login" element={<ConnexionView />} />
+          <Route path="/signup" element={<InscriptionPageController />} />
+        </Routes> 
+      </Router>
+         </div>
+      <Footer/>
     </>
   );
 }
