@@ -12,13 +12,13 @@ function App() {
     <>
       <Header/>
       <div className="content">
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePageController />} />
-          <Route path="/login" element={<ConnexionView />} />
-          <Route path="/signup" element={<InscriptionPageController />} />
-        </Routes> 
-      </Router>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePageController />} />
+            <Route path="/login" element={<ConnexionView />} />
+            <Route path="/signup" element={<InscriptionPageController />} />
+          </Routes> 
+        </Router>
       </div>
       
       <Footer/>
