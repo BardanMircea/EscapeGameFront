@@ -1,4 +1,5 @@
 import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material"
+import {Link} from "react-router-dom"
 import SalleModel from "../../models/SalleModel"
 
 interface HomePageViewProps {
@@ -35,12 +36,12 @@ const HomePageView = (props : HomePageViewProps) => {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary">
+                            <Button component={Link} to={`/details/${salle._id}`} size="small" color="primary" >
                                     Détails
                                 </Button>
-                                <Button size="small" color="primary">
+                                {/* <Button size="small" color="primary">
                                     Resérver
-                                </Button>
+                                </Button> */}
                             </CardActions>
                         </Card>
                     </Grid>
