@@ -16,7 +16,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePageController />} />
-            <Route path="/login" element={<ConnexionView />} />
+            <Route path="/login" element={<ConnexionController />} />
             <Route path="/signup" element={<InscriptionPageController />} />
             <Route path="/details/:salle_id" element={<SalleDetailsPageController />} />
           </Routes> 
