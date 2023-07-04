@@ -44,6 +44,11 @@ h2 {
   background-color: rgb(49, 44, 44);
 } */
 
+.card-details-container {
+  display: flex;
+  justify-content: center;
+}
+
 footer {
   color: white;
   position: sticky;

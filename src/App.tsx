@@ -5,6 +5,7 @@ import Footer from "./layouts/HeaderEtFooter/Footer";
 import InscriptionPageController from "./layouts/InscriptionPage/InscriptionPageController";
 import HomePageController from "./layouts/HomePage/HomePageController";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SalleDetailsPageController from "./layouts/SalleDetailsPage/SalleDetailsPageController";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<HomePageController />} />
             <Route path="/login" element={<ConnexionView />} />
             <Route path="/signup" element={<InscriptionPageController />} />
+            <Route path="/details/:salle_id" element={<SalleDetailsPageController />} />
           </Routes> 
         </Router>
       </div>
