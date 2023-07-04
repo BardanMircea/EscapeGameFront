@@ -57,7 +57,9 @@ const SalleDetailsPageController = () => {
     }, [salle_id])
 
     return(
-        <div className="card-details-container">
+        <>
+            <h1>{`${salle?.nom} Escape Room`}</h1>
+            <div className="card-details-container">
             <Card sx={{width: 1000, maxWidth: 1200, maxHeight: 1000, mt:5, mb:5}} >
                 <CardActionArea>
                     <CardMedia
@@ -97,7 +99,9 @@ const SalleDetailsPageController = () => {
                 </CardActions>
             </Card>
         </div>
-    )
+    
+        </>
+        )
 }
 
 export default SalleDetailsPageController
