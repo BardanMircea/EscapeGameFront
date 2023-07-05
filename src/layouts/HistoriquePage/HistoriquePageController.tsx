@@ -1,49 +1,42 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import HistoriqueModel from "../../models/HistoriqueModel";
+import HistoriqueView from "./HistoriquePageView";
 
-const HistoriqueView = () => {
-  ////////Rechercher l'id de l'utilisateur dans le localStorage/////////////////
-  //   const dataLS = localStorage.getItem("nom_de_la_clé");
+const HistoriquePageController = () => {
+  //Hook pour l'utilisateur
+  const [resultat, setResultat] = useState<HistoriqueModel[]>([]);
+  //Hook pour le loading (attendre la réponse du fetch avant d'afficher la page)
+  const [loading, setLoading] = useState(false);
 
-  let reservationIds: string[] = [];
+  // Récupérer la valeur de l'utilisateur dans le local storage
+  let id = "";
+  const data = localStorage.getItem("user");
+  if (data) {
+    const parsedData = JSON.parse(data);
+    id = parsedData._id;
+  } else {
+    console.log("Aucune valeur trouvée dans le localStorage");
+  }
 
-  fetch("http://localhost:3000/reservations")
-    .then((response) => response.json())
+  //url avec l'id de l'utilisateur
+  let url = "http://localhost:3000/reservations/participants/" + id;
 
-    .then((dataReserv) => {
-      console.log("LES RESERVATIONS SONT", dataReserv);
-      for (const element of dataReserv) {
-        if (element.utilisateurId == "649ae774519f697934d8a0a0") {
-          reservationIds.push(element._id);
-        }
-      }
-      console.log("RESERVATION IDS", reservationIds);
-      return Promise.all(
-        reservationIds.map((id) =>
-          fetch(`http://localhost:3000/participants/${id}`)
-        )
-      );
-    })
-    .then((responseArr) =>
-      Promise.all(responseArr.map((response) => response.json()))
-    )
-    .then((dataArr) => {
-      console.log("LES PARTICIPANTS DE LA RESERVATION SONT", dataArr);
-      // Manipulez les données récupérées ici
-    })
-    .catch((error) => {
-      // Gérez les erreurs de requête ici
+  //fonction pour récupérer la réservation, les participants et la salle
+  async function fetchData() {
+    try {
+      const responseReserv = await fetch(url);
+      const dataReserv = await responseReserv.json();
+      setResultat(dataReserv);
+      setLoading(true);
+    } catch (error) {
       console.error(error);
-    });
-  ////fin copie
+    }
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  return (
-    <>
-      <p>rêver</p>
-    </>
-  );
+  return <HistoriqueView resultat={resultat} loading={loading} />;
 };
 
-export default HistoriqueView;
-
-//modification du CSS
-//modification de Vieuw, vérifier avant de pusher
+export default HistoriquePageController;
