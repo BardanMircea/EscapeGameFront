@@ -65,15 +65,15 @@ const Footer = () => {
             <p>75008 Paris</p>
 
             <p>+ 33 1 42 92 81 00</p>
-            <p>contact@escape-game.com</p>
+            <p>dictateurs@escape-game.com</p>
           </div>
           <div className="right">
             <p>
               <b>À propos</b>
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
+              Escape Game vous propose différentes salles de jeux où vous
+              pourrez découvrir vos talents d'aventurier et de détective.
             </p>
             <p>
               <FacebookIcon /> <TwitterIcon />
@@ -84,7 +84,7 @@ const Footer = () => {
         </div>
         <div className="Down">
           <p>
-            Copyright© <u>SLI & SYL</u> 2022.
+            Copyright© <u>Dictateurs</u> 2023.
           </p>
         </div>
       </footer>

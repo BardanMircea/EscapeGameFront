@@ -33,6 +33,7 @@ h2 {
   margin-bottom: 10px;
 }
 
+/* Code CSS pour le footer */
 .Contenair {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -52,7 +53,7 @@ h2 {
 footer {
   color: white;
   position: sticky;
-  top: calc(100vh - 200px); /* La hauteur du footer */
+  bottom: 0;
   height: 200px;
   width: 100%;
   background-color: rgb(49, 44, 44);
@@ -63,6 +64,20 @@ footer {
   min-height: calc(100vh - 100px - 228px); /* Soustrait la hauteur du footer */
 }
 
+
+@media (max-width: 767px) {
+  footer {
+    height: auto;
+    position: static;
+    padding-left: 20px;
+  }
+
+  .Contenair {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+
 .ReservCard {
   margin-left: 30px;
+
 }
