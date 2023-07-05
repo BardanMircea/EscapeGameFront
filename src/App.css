@@ -73,6 +73,5 @@ footer {
 }
 
 .content {
-  min-height: calc(100vh - 100px - 164px); /* Soustrait la hauteur du footer */
+  min-height: calc(100vh - 100px - 228px); /* Soustrait la hauteur du footer */
 }
-
