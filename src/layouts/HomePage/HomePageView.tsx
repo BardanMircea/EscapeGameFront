@@ -34,7 +34,7 @@ const HomePageView = (props : HomePageViewProps) => {
                                 </CardContent>
                             <CardActions>
                             <Button component={Link} to={`/details/${salle._id}`} size="small" color="primary" >
-                                    Détails
+                                    Réserver
                                 </Button>
                             </CardActions>
                         </Card>
