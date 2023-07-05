@@ -7,8 +7,7 @@ import {
   Typography,
   Alert,
 } from "@mui/material";
-// import { Link } from "react-router-dom"
-// const lock = "../../images/lock.png"
+import LockPersonIcon from "@mui/icons-material/LockPerson";
 
 interface InscriptionPageViewProps {
   nom: string;
@@ -62,11 +61,9 @@ export const InscriptionPageView = (props: InscriptionPageViewProps) => {
           alignItems: "center",
         }}
       >
-        <img
-          className="lock-icon"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAMAAACcwCSMAAAAb1BMVEX///+AAIB0AHR5AHl8AHziz+Ly7fLWwtbWu9bBmcGoc6jZw9m0f7T++/7s3+zcxdyvd6/59PnGn8bPrs/UtdTm1eby6fKJJ4mTRJOkZKSYS5iPN4+DF4O+kb7JpcmZUZmpb6mgW6CJLomiZ6K0hrTHpscrAAAEWklEQVRoge2baXPbIBCGJUCpnehCtg7bkq/o///GWpm0BQRiEYszbfN+yEzGgoflWJYrilYqL87btHwth/MmX5vHKmVF2TJGKWPTX8raMsmehG6qE6WxJMq63csz2NtWIX/y71Vw6+s70aEnkTYJyx6M6A98GhDdHLU1LtR914Ri5y1bZscxa+tA7N7KftDjIPQGwp7wAXwOt9f5p3r0ds86KDtmJ44MTy39XBS94rI3DuwHvcJkc02ds8e80vePmUXzG8Vs9uvMcEa6KsmbJi+qjsx/veCxE9WpMjYKtvGBqdaTHRY769RavSnVyg9q8VqsHr9Tcmaa/rRTy7fFYXNliLO97quNajpOn1OGGdGyo6iQP0MabrLhxJip0jp3jMAmkdjsYP6ylGynhhpykpwlW2jKrJe+PPqzuUNL7uVy+s+tcne7Lw/fIwMXFKRXKb+zQ0nZyRsuG24ZvLIvJL5eTnLr1Boab8WymjwCWFJu1Boc5mIjMd8w/l3MrbPWY3YU6/3o52d472jJKPURv0ZvXNuwEPsI8Yvh5bwAExUnjqVdUCXVIiTFSeyggxdcjJiX5pQ/Ep0Su3rBpaxGSIqtc3FNym4CHOarpcnl4tPduThsYRO05BLtjmEJLnYfUkCS1CLcK5BrWhEOGrW5CPea0hvRwdFNApDU5tQHnsSiCEixVN7V6Hy2DnEWua30sJVu/ekqRsYVUxs/OC3JzZot7J7IXrM5h8d+0C9uNT8gsh/00oWde3dzWcRlS/iA0M9FuSydsA13Mh23xSfBo2iu7sEgCLwr+YJe6w47cyHgBDq/BYFDJ5ggcGh3DwIHxWCh4G//LfzHPwWfTpG/Bk5J/z6OZTvf6g8Op/3w6TAbw7FyODgdhYmCD/bKR4RTxWUUVjoifOauElsKNLhuE3RnaXcsOLvpEs1Pv8LAtRNU/hTL2U2/BFiOeJHgpq0Z9QAsCNwUkyzH21iWG27jvCz2OKw2NwTBfClRaMv5suU4wYQpCG6WU+HAqeF0etnHIcFNG6rvy+McK4bT1rvNwyHB9aaXFt+OFbczTavbZnS8RcN8asl7SxLEFYt6wNbYIxnE5ZKcV2KPIDHh8n0MwN2lb/jXwMGbA/a8vuF/CRy8G/WlcGtWK+DQTUBumyWm8+GNoJt9iQze/pQOMY25CQJ8Dr/BcEXe6zevsTSyrXfd5XBViaPvhUGuW/xSiX3Gol3SG1Qjmw6e0z4EGDwOYp0LO6ox2Ya9DLMwD5jcDhQjp/vsVrnf/rVG4mCxFef3BVKPJ6uuLuxR6LZrkyZVCJ1u/d0sfx/vc/00ib36PGNOnk1Vc/FoeHL0vWY+fzIANnvwv+dd255q6UWPOK/X9r0znvZoLyqiXezU9CReObgN2l9gR1jTkdcF41q9pCxPZ48yNWR6GvMgDyV5kXbMWIDpnWqXJtgvtkTV+/LUf7yEFTT925/STRibZfH67bxNX38r3Z6Leo3FPwFEmEHLgdec/QAAAABJRU5ErkJggg=="
-          alt=""
-        />
+        <Typography component="h1" variant="h5">
+          <LockPersonIcon />
+        </Typography>
         <Typography component="h1" variant="h5">
           Inscription
         </Typography>
