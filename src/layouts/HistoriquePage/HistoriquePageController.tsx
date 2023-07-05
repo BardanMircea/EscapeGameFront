@@ -1,49 +1,48 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import HistoriqueModel from "../../models/HistoriqueModel";
+import HistoriqueView from "./HistoriquePageView";
 
-const HistoriqueView = () => {
-  ////////Rechercher l'id de l'utilisateur dans le localStorage/////////////////
-  //   const dataLS = localStorage.getItem("nom_de_la_clé");
+const HistoriqueController = () => {
+  const [resultat, setResultat] = useState<HistoriqueModel[]>([]);
+  let idReserv = "649ae774519f697934d8a0a0";
+  let idNoResrv = "649ea013ca883d880d30d30d";
+  let url = "http://localhost:3000/reservations/participants/" + idNoResrv;
+  let dataReserv = [];
 
-  let reservationIds: string[] = [];
-
-  fetch("http://localhost:3000/reservations")
-    .then((response) => response.json())
-
-    .then((dataReserv) => {
-      console.log("LES RESERVATIONS SONT", dataReserv);
-      for (const element of dataReserv) {
-        if (element.utilisateurId == "649ae774519f697934d8a0a0") {
-          reservationIds.push(element._id);
-        }
-      }
-      console.log("RESERVATION IDS", reservationIds);
-      return Promise.all(
-        reservationIds.map((id) =>
-          fetch(`http://localhost:3000/participants/${id}`)
-        )
+  async function fetchData() {
+    try {
+      const responseReserv = await fetch(
+        url
+        // "http://localhost:3000/reservations/participants/${idReserv}"
       );
-    })
-    .then((responseArr) =>
-      Promise.all(responseArr.map((response) => response.json()))
-    )
-    .then((dataArr) => {
-      console.log("LES PARTICIPANTS DE LA RESERVATION SONT", dataArr);
-      // Manipulez les données récupérées ici
-    })
-    .catch((error) => {
+      const dataReserv = await responseReserv.json();
+      setResultat(dataReserv);
+      //console.log("AUTRE REPONSE", [dataReserv]);
+      console.log("LES PARTICIPANTS DES RESERVATIONS SONT", dataReserv);
+    } catch (error) {
       // Gérez les erreurs de requête ici
       console.error(error);
-    });
-  ////fin copie
+    }
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
+  // return <HistoriqueView resultat={resultat} />;
   return (
-    <>
-      <p>rêver</p>
-    </>
+    <div>
+      {dataReserv.length !== 0 ? (
+        <HistoriqueView resultat={resultat} />
+      ) : (
+        <p>Vous n'avez pas encore de réservation </p>
+      )}
+    </div>
   );
 };
 
-export default HistoriqueView;
+export default HistoriqueController;
 
 //modification du CSS
 //modification de Vieuw, vérifier avant de pusher
+
+//fuser -k 3000/tcp [tuer le port 3000]
