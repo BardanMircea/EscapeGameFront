@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardMedia, CardContent, Typography, ButtonGroup, Button, CardActions } from "@mui/material"
+import { Card, CardMedia, CardContent, Typography, ButtonGroup, Button, CardActions } from "@mui/material"
 import { Link } from "react-router-dom"
 import SalleModel from "../../models/SalleModel"
 import JourModel from "../../models/JourModel"
