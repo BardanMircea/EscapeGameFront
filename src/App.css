@@ -31,6 +31,11 @@ h2 {
   text-align: center;
 }
 
+.card-details-container {
+  display: flex;
+  justify-content: center;
+}
+
 footer {
   color: white;
   position: sticky;
@@ -42,11 +47,9 @@ footer {
 }
 
 .content {
-  min-height: calc(100vh - 100px - 164px); /* Soustrait la hauteur du footer */
+  min-height: calc(100vh - 100px - 228px); /* Soustrait la hauteur du footer */
 }
 
 .ReservCard {
   margin-left: 30px;
 }
-
-/* display et du pourcentage */

@@ -1,5 +1,5 @@
 class UtilisateurModel {
-    id : number
+    _id : number
     nom : string
     prenom : string
     email : string
@@ -7,7 +7,7 @@ class UtilisateurModel {
     naissance : string
 
     constructor(id : number, nom : string, prenom : string, email : string, mdp : string, naissance : string){
-        this.id = id
+        this._id = id
         this.nom = nom
         this.prenom = prenom
         this.email = email
