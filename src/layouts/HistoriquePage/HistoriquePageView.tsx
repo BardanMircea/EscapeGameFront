@@ -1,6 +1,7 @@
 import HistoriqueModel from "../../models/HistoriqueModel";
 import { Grid, Card, CardMedia, Typography, colors } from "@mui/material";
 import MoodIcon from "@mui/icons-material/Mood";
+import { useNavigate } from "react-router-dom";
 
 //interface Historique
 interface HistoriqueViewProps {
@@ -10,6 +11,7 @@ interface HistoriqueViewProps {
 
 const HistoriquePageView = (props: HistoriqueViewProps) => {
   const { resultat, loading } = props;
+  const navigate = useNavigate();
 
   return (
     loading && (
@@ -88,7 +90,11 @@ const HistoriquePageView = (props: HistoriqueViewProps) => {
               }}
             >
               N'attendez plus pour réserver et venez découvrir nos salles
-              disponibles&nbsp;<a href="http://localhost:5173/">ici</a>&nbsp;
+              disponibles&nbsp;
+              <a href="/" onClick={() => navigate("/")}>
+                ici
+              </a>
+              &nbsp;
               <MoodIcon />
             </p>
           </div>
