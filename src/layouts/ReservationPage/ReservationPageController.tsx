@@ -34,7 +34,7 @@ const ReservationPageController = () => {
     }
 
     function submitReservation(event: any): void {
-        // event.preventDefault()
+        event.preventDefault()
     }
 
     return(
