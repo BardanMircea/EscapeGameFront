@@ -2,14 +2,10 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import Link from "@mui/material/Link";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 //Fonction Footer permet de positionner le footer à la bonne place dans la page
 const Footer = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     const adjustFooterPosition = () => {
       const bodyHeight = document.body.offsetHeight;
@@ -49,14 +45,8 @@ const Footer = () => {
               <b>Escape Game</b>
             </p>
             <p>
-              <Link
-                href="/"
-                underline="none"
-                color="inherit"
-                onClick={() => navigate("/")}
-              >
-                Home
-              </Link>
+              <a href="https://openclassrooms.com/fr/">Home</a> Blog| Pricing|
+              About| Faq| Contact
             </p>
           </div>
 

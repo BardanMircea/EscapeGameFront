@@ -5,10 +5,9 @@
 .week-container {
   display: flex;
   justify-content: space-between;
-
 }
 
-.day-container{
+.day-container {
   display: flex;
   flex-direction: column;
   align-items: center;
