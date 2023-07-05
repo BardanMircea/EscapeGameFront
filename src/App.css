@@ -64,7 +64,6 @@ footer {
   min-height: calc(100vh - 100px - 228px); /* Soustrait la hauteur du footer */
 }
 
-
 @media (max-width: 767px) {
   footer {
     height: auto;
@@ -76,8 +75,7 @@ footer {
     grid-template-columns: 1fr;
     margin: 0;
   }
-
+}
 .ReservCard {
   margin-left: 30px;
-
 }
