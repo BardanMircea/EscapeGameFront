@@ -4,7 +4,7 @@ import JourModel from "../../models/JourModel"
 import { useEffect, useState } from "react"
 import SalleDetailsPageView from "./SalleDetailsPageView"
 
-const SalleDetailsPageController = () => {
+export const SalleDetailsPageController = () => {
     // initialize a week variable of type JourModel[]
     const semaine = [new JourModel("Lundi"), new JourModel("Mardi"), new JourModel("Mercredi"), new JourModel("Jeudi"), new JourModel("Vendredi"), new JourModel("Samedi"), new JourModel("Dimanche")]
 

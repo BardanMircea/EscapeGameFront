@@ -50,7 +50,7 @@ const SalleDetailsPageView = (props : SalleDetailsPageViewProps) => {
                     </CardActionArea>
                     <CardActions sx={{display:"flex", justifyContent:"center", mt:2}}>
                         <Button component={Link} to="#" size="small" color="primary"  >
-                            Resérver
+                            Retour
                         </Button>
                     </CardActions>
                 </Card>
