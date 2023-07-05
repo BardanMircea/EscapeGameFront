@@ -11,7 +11,7 @@ interface SalleDetailsPageViewProps {
 const SalleDetailsPageView = (props : SalleDetailsPageViewProps) => {
 
     const {salle, horaire} = props
-    const creneaux = ["Matin", "Apres-Midi"]
+    const creneaux = ["matin", "après-midi"]
 
     return(
         <>

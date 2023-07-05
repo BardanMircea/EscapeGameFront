@@ -2,6 +2,11 @@
   margin: 0;
 } */
 
+.participants-input-container {
+  display: flex;
+  justify-content: center;
+}
+
 .week-container {
   display: flex;
   justify-content: space-between;
@@ -24,7 +29,6 @@ body {
 h1 {
   margin-bottom: 50px;
   text-align: center;
-  color: rgb(124, 31, 124);
 }
 
 h2 {
