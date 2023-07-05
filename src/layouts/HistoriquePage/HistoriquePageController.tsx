@@ -2,25 +2,33 @@ import { useEffect, useState } from "react";
 import HistoriqueModel from "../../models/HistoriqueModel";
 import HistoriqueView from "./HistoriquePageView";
 
-const HistoriqueController = () => {
+const HistoriquePageController = () => {
+  //Hook pour l'utilisateur
   const [resultat, setResultat] = useState<HistoriqueModel[]>([]);
-  let idReserv = "649ae774519f697934d8a0a0";
-  let idNoResrv = "649ea013ca883d880d30d30d";
-  let url = "http://localhost:3000/reservations/participants/" + idNoResrv;
-  let dataReserv = [];
+  //Hook pour le loading (attendre la réponse du fetch avant d'afficher la page)
+  const [loading, setLoading] = useState(false);
 
+  // Récupérer la valeur de l'utilisateur dans le local storage
+  let id = "";
+  const data = localStorage.getItem("user");
+  if (data) {
+    const parsedData = JSON.parse(data);
+    id = parsedData._id;
+  } else {
+    console.log("Aucune valeur trouvée dans le localStorage");
+  }
+
+  //url avec l'id de l'utilisateur
+  let url = "http://localhost:3000/reservations/participants/" + id;
+
+  //fonction pour récupérer la réservation, les participants et la salle
   async function fetchData() {
     try {
-      const responseReserv = await fetch(
-        url
-        // "http://localhost:3000/reservations/participants/${idReserv}"
-      );
+      const responseReserv = await fetch(url);
       const dataReserv = await responseReserv.json();
       setResultat(dataReserv);
-      //console.log("AUTRE REPONSE", [dataReserv]);
-      console.log("LES PARTICIPANTS DES RESERVATIONS SONT", dataReserv);
+      setLoading(true);
     } catch (error) {
-      // Gérez les erreurs de requête ici
       console.error(error);
     }
   }
@@ -28,21 +36,7 @@ const HistoriqueController = () => {
     fetchData();
   }, []);
 
-  // return <HistoriqueView resultat={resultat} />;
-  return (
-    <div>
-      {dataReserv.length !== 0 ? (
-        <HistoriqueView resultat={resultat} />
-      ) : (
-        <p>Vous n'avez pas encore de réservation </p>
-      )}
-    </div>
-  );
+  return <HistoriqueView resultat={resultat} loading={loading} />;
 };
 
-export default HistoriqueController;
-
-//modification du CSS
-//modification de Vieuw, vérifier avant de pusher
-
-//fuser -k 3000/tcp [tuer le port 3000]
+export default HistoriquePageController;
