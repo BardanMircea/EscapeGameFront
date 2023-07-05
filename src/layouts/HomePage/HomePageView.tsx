@@ -12,11 +12,11 @@ const HomePageView = (props : HomePageViewProps) => {
     return(
         <>
             <h1>Escape Game Page d'Accueil</h1>
-            <h2>Nos Escape Rooms vous attendent</h2>
+            {/* <h2>Nos Escape Rooms vous attendent</h2> */}
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12}} sx={{ paddingLeft:15, paddingRight:15}}>
                 {salles.map((salle) => (
                     <Grid item xs={2} sm={4} md={4} key={salle._id} sx={{ display: 'flex', justifyContent: 'center'}}>
-                         <Card sx={{ maxWidth: 345, width: 345}} >
+                         <Card sx={{width: 400}} >
                             <CardActionArea>
                                 <CardMedia
                                 component="img"
