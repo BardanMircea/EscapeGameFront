@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SalleDetailsPageController from "./layouts/SalleDetailsPage/SalleDetailsPageController";
 import AuthProvider from "./components/AuthContext";
 import Layout from "./components/mainLayout";
+import HistoriquePageController from "./layouts/HistoriquePage/HistoriquePageController";
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
               element={
                 <Layout>
                   <SalleDetailsPageController />
+                </Layout>
+              }
+            />
+            <Route
+              path="/history"
+              element={
+                <Layout>
+                  <HistoriquePageController />
                 </Layout>
               }
             />
