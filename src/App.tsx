@@ -7,7 +7,7 @@ import SalleDetailsPageController from "./layouts/SalleDetailsPage/SalleDetailsP
 import AuthProvider from "./components/AuthContext";
 import Layout from "./components/mainLayout";
 import HistoriquePageController from "./layouts/HistoriquePage/HistoriquePageController";
-
+import AdminPageController from "./layouts/AdminPage/AdminPageController";
 function App() {
   return (
     <>
@@ -51,6 +51,14 @@ function App() {
               element={
                 <Layout>
                   <HistoriquePageController />
+                </Layout>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <Layout>
+                  <AdminPageController />
                 </Layout>
               }
             />
