@@ -2,10 +2,14 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import Link from "@mui/material/Link";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Fonction Footer permet de positionner le footer à la bonne place dans la page
 const Footer = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const adjustFooterPosition = () => {
       const bodyHeight = document.body.offsetHeight;
@@ -45,8 +49,14 @@ const Footer = () => {
               <b>Escape Game</b>
             </p>
             <p>
-              <a href="https://openclassrooms.com/fr/">Home</a> Blog| Pricing|
-              About| Faq| Contact
+              <Link
+                href="/"
+                underline="none"
+                color="inherit"
+                onClick={() => navigate("/")}
+              >
+                Home
+              </Link>
             </p>
           </div>
 
@@ -55,15 +65,15 @@ const Footer = () => {
             <p>75008 Paris</p>
 
             <p>+ 33 1 42 92 81 00</p>
-            <p>contact@escape-game.com</p>
+            <p>dictateurs@escape-game.com</p>
           </div>
           <div className="right">
             <p>
               <b>À propos</b>
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
+              Escape Game vous propose différentes salles de jeux où vous
+              pourrez découvrir vos talents d'aventurier et de détective.
             </p>
             <p>
               <FacebookIcon /> <TwitterIcon />
@@ -74,7 +84,7 @@ const Footer = () => {
         </div>
         <div className="Down">
           <p>
-            Copyright© <u>SLI & SYL</u> 2022.
+            Copyright© <u>Dictateurs</u> 2023.
           </p>
         </div>
       </footer>

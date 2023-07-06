@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SalleDetailsPageController from "./layouts/SalleDetailsPage/SalleDetailsPageController";
 import AuthProvider from "./components/AuthContext";
 import Layout from "./components/mainLayout";
+
 import ReservationPageController from "./layouts/ReservationPage/ReservationPageController";
+import HistoriquePageController from "./layouts/HistoriquePage/HistoriquePageController";
+
 
 function App() {
   return (
@@ -47,13 +50,23 @@ function App() {
               }
             />
             <Route
+
               path="/reservation/:salle_id/:salle_nom/:salle_capacite/:salle_img/:jour/:creneau"
               element={
                 <Layout>
                   <ReservationPageController />
                 </Layout>
               }
-            />
+              />
+              <Route
+              path="/history"
+              element={
+                <Layout>
+                  <HistoriquePageController />
+
+                </Layout>
+              }
+              />
           </Routes>
         </Router>
       </AuthProvider>

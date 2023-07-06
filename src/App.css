@@ -1,19 +1,16 @@
-/* body {
-  margin: 0;
-} */
 
 .participants-input-container {
   display: flex;
   justify-content: center;
 }
 
+
 .week-container {
   display: flex;
   justify-content: space-between;
-
 }
 
-.day-container{
+.day-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +39,7 @@ h2 {
   margin-bottom: 10px;
 }
 
+/* Code CSS pour le footer */
 .Contenair {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -53,15 +51,6 @@ h2 {
   text-align: center;
 }
 
-/* Footer {
-  color: white;
-  position: sticky;
-  bottom: 0;
-  height: 200px;
-  width: 100%;
-  background-color: rgb(49, 44, 44);
-} */
-
 .card-details-container {
   display: flex;
   justify-content: center;
@@ -70,12 +59,29 @@ h2 {
 footer {
   color: white;
   position: sticky;
-  top: calc(100vh - 200px); /* La hauteur du footer */
+  bottom: 0;
   height: 200px;
   width: 100%;
   background-color: rgb(49, 44, 44);
+  margin-top: 30px;
 }
 
 .content {
   min-height: calc(100vh - 100px - 228px); /* Soustrait la hauteur du footer */
+}
+
+@media (max-width: 767px) {
+  footer {
+    height: auto;
+    position: static;
+    padding-left: 20px;
+  }
+
+  .Contenair {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+}
+.ReservCard {
+  margin-left: 30px;
 }
