@@ -1,21 +1,24 @@
-import { Card, CardMedia, CardContent, Typography, Button, CardActions, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material"
+import { Card, CardMedia, CardContent, Typography, Button, CardActions, FormControl, InputLabel, MenuItem, Select, TextField, Alert } from "@mui/material"
 import { ChangeEvent, useEffect, useState } from "react"
-import { Link, json, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import ParticipantModel from "../../models/ParticipantModel"
+import ReservationModel from "../../models/ReservationModel"
 
 const ReservationPageController = () => {
     // get the salle_id passed as a parameter from the details page when clicking on a time window(creneau horaire)
     const {salle_id, salle_nom, salle_capacite, salle_img, jour, creneau} = useParams()
-    const parts = salle_capacite?.split("-")
-    
+    const navigate = useNavigate()
+
+    const parts = salle_capacite?.split("-")    
     const minNumberPart : number = parts ? parseInt(parts[0]) : 0
     const maxNumberPart : number = parts ? parseInt(parts[1]) : 0
-
     const values : number[] = populateValues(minNumberPart, maxNumberPart)
 
     const [selectedNumberOfParticipants, setSelectedNumberOfParticipants] = useState< | "" | "value" | undefined>("")
     const [showInputsForm, setShowInputsForm] = useState(false);
     const [participants, setParticipants] = useState<ParticipantModel[]>([])
+    let isAddSuccessful = false;
+    
 
     // function to pupulate an array with numbers ranging between the minimum and the maximum capacity of the room
     function populateValues(min : number, max: number): number[] {
@@ -39,14 +42,92 @@ const ReservationPageController = () => {
         setParticipants(participantsArr)
     }
 
+    // check if there are any required fields missing, if so, return
+    function isMissingRequiredFields() {
+        if(participants.length === 0) return true
+        let result = false
+
+        participants.forEach(participant => {
+            if(!participant.nom || !participant.prenom || !participant.naissance){
+                result = true
+            }
+        })
+        return result
+    }
+
     async function submitReservation(event: any) {
-        // event.preventDefault()
-        // const requestOptions = {
-        //     method : "POST",
-        //     headers : { "Content-Type": "application/json" },
-        //     body : JSON.stringify()
-        // }
-        // const submitReservationResponse = await fetch()
+        event.preventDefault()
+
+        // get the user id from localStorage
+        let idUtilisateur= "";
+        const data = localStorage.getItem("user");
+        if (data) {
+            const parsedData = JSON.parse(data);
+            idUtilisateur = parsedData._id;
+        } else {
+            throw new Error("Aucune valeur trouvée dans le localStorage");
+        }
+
+        // create the reservation object to send to the back end
+        const reservation : ReservationModel = {
+            salleId : salle_id,
+            jour : jour,
+            creneau : creneau,            
+            utilisateurId : idUtilisateur
+        }
+
+        // create request options for the reservation request
+        const reservationRequestOptions = {
+            method : "POST",
+            headers : { "Content-Type": "application/json" },
+            body : JSON.stringify(reservation)
+        }
+
+        // post the reservation and retrieve the reservation id in the reservationResponse
+        const submitReservationResponse = await fetch(`http://localhost:3000/reservations`, reservationRequestOptions)
+
+
+        // check if the response is ok
+        if(submitReservationResponse.status === 422){
+            throw new Error("Server sent: Attributs manquants")
+        }
+        if(!submitReservationResponse.ok) {
+            throw new Error("Erreur imprevue survenue")
+        }
+
+        // parse the response into json format
+        const reservationIdJson = await submitReservationResponse.json()
+
+        // assign the reservation id to each participant before sending the participants to the back end 
+        // const participantsCopy = [... participants]
+        const submittedParticipants : any  = []
+        participants.forEach(participant => {
+            submittedParticipants.push({
+                nom : participant.nom,
+                prenom : participant.prenom,
+                naissance : participant.naissance,
+                reservationId : reservationIdJson
+            })
+        })
+
+        // submit Participants
+        const participantsRequestOptions = {
+            method : "POST",
+            headers : { "Content-Type": "application/json" },
+            body : JSON.stringify(submittedParticipants)
+        }
+
+        const submitParticipantsResponse = await fetch(`http://localhost:3000/participants`, participantsRequestOptions)
+
+        if(submitParticipantsResponse.status === 422){
+            throw new Error("Server sent: Attributs manquants")
+        }
+
+        if(!submitParticipantsResponse.ok) {
+            throw new Error("Erreur imprevue survenue")
+        }
+
+        isAddSuccessful = true;
     }
 
     function updateParticipantNom(id: number, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
@@ -65,6 +146,7 @@ const ReservationPageController = () => {
 
     function updateParticipantNaissance(id: number, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
         const participantsCopy = [... participants]
+        
         
         participantsCopy[id].naissance = event.target.value
         setParticipants(participantsCopy)
@@ -107,19 +189,19 @@ const ReservationPageController = () => {
                         <>  
                             <h2>Liste des participants</h2>
                             {participants.map( participant => (
-                            <div className="participants-input-container" key={participant.id}>
-                                <TextField label={`Nom`} variant="outlined" value={participant.nom} onChange={(event) => updateParticipantNom(participant.id, event)}/>
-                                <TextField label={`Prenom`} variant="outlined" value={participant.prenom}onChange={(event) => updateParticipantPrenom(participant.id, event)}/>
-                                <TextField label={`Date de naissance`} variant="outlined" value={participant.naissance}onChange={(event) => updateParticipantNaissance(participant.id, event)}/>
+                            <div className="participants-input-container" key={participant._id}>
+                                <TextField sx={{mb:1}} required label={`Nom`} variant="outlined" value={participant.nom} onChange={(event) => updateParticipantNom(participant._id, event)}/>
+                                <TextField sx={{mb:1}} required label={`Prenom`} variant="outlined" value={participant.prenom}onChange={(event) => updateParticipantPrenom(participant._id, event)}/>
+                                <TextField sx={{mb:1}} required label={`Date de naissance`} type="date" InputLabelProps={{ shrink: true }} variant="outlined" value={participant.naissance}onChange={(event) => updateParticipantNaissance(participant._id, event)}/>
                             </div>
                             ))}
                         </>
                         )}
                     </CardContent>
                     <CardActions sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-                        <Button component={Link} to="#" size="small" color="primary" onClick={submitReservation}>
+                        {!isMissingRequiredFields() && <Button component={Link} to="#" size="small" color="primary" onClick={(event) => {submitReservation(event); true? navigate("/history") : navigate("/errorPage")} }>
                         Resérver
-                        </Button>
+                        </Button>}
                     </CardActions>
                 </Card>
             </div>  
