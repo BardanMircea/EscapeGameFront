@@ -19,7 +19,7 @@ const HistoriquePageController = () => {
   }
 
   //url avec l'id de l'utilisateur
-  let url = "http://localhost:3000/reservations/participants/" + id;
+  const url = "http://localhost:3000/reservations/participants/" + id;
 
   //fonction pour récupérer la réservation, les participants et la salle
   async function fetchData() {
