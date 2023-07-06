@@ -50,7 +50,7 @@ export const SalleDetailsPageController = () => {
         setHoraire(semaine)
     }
 
-    // useEffect to update the Room and the room Schedule
+    // useEffect to update the Room and the room Schedule each time the salle_id changes
     useEffect(() => {-
         fetchSalle()
         getSalleHoraire()

@@ -1,7 +1,7 @@
+
 import {
   Grid,
   Card,
-  CardActionArea,
   CardMedia,
   CardContent,
   Typography,
@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import SalleModel from "../../models/SalleModel";
+
 
 interface HomePageViewProps {
   salles: SalleModel[];
@@ -20,7 +21,7 @@ const HomePageView = (props: HomePageViewProps) => {
 
   return (
     <>
-      <h1>Nos escape games</h1>
+      <h1>Nos escape rooms</h1>
       {/* <h2>Nos Escape Rooms vous attendent</h2> */}
       <Grid
         container
@@ -45,7 +46,7 @@ const HomePageView = (props: HomePageViewProps) => {
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <Card sx={{ width: 400, maxWidth: "100%" }}>
-              <CardActionArea>
+              
                 <CardMedia
                   component="img"
                   height="140"
@@ -75,7 +76,7 @@ const HomePageView = (props: HomePageViewProps) => {
                     {salle.description}
                   </Typography>
                 </CardContent>
-              </CardActionArea>
+             
               <CardActions>
                 <Button
                   component={Link}
@@ -83,11 +84,8 @@ const HomePageView = (props: HomePageViewProps) => {
                   size="small"
                   color="primary"
                 >
-                  Détails
+                  Résever
                 </Button>
-                {/* <Button size="small" color="primary">
-                                    Resérver
-                                </Button> */}
               </CardActions>
             </Card>
           </Grid>
