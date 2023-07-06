@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import UtilisateurRequestModel from "../../models/UtilisateurRequestModel";
 import { InscriptionPageView } from "./InscriptionPageView";
 
@@ -14,7 +14,7 @@ const InscriptionPageController = () => {
   const [userAlreadyExists, setUserAlreadyExists] = useState(false);
   const [isAddsuccessful, setIsAddsuccessful] = useState(false);
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     // reinitialise the state for our different error messages
