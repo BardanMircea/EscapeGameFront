@@ -79,3 +79,9 @@ footer {
 .ReservCard {
   margin-left: 30px;
 }
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Permet aux éléments de la grille de s'étendre sur la hauteur totale */
+}
