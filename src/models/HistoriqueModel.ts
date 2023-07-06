@@ -1,13 +1,24 @@
-class HistoriqueModel {
-  participants: any[];
-  reservation: object;
-  salle: object;
+interface ReservationModel {
+  _id: string;
+  salleId: string;
+  jour: string;
+  creneau: string;
+  utilisateurId: string;
+}
 
-  constructor(participants: any[], reservation: object, salle: object) {
-    this.participants = participants;
-    this.reservation = reservation;
-    this.salle = salle;
-  }
+interface SalleModel {
+  _id: string;
+  nom: string;
+  description: string;
+  img: string;
+  capacite: string;
+}
+
+interface HistoriqueModel {
+  participants: any[];
+  reservation: ReservationModel;
+  salle: SalleModel;
 }
 
 export default HistoriqueModel;
+// export default ReservationModel;
