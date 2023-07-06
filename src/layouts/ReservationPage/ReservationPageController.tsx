@@ -1,6 +1,6 @@
 import { Card, CardMedia, CardContent, Typography, Button, CardActions, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material"
-import { useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { ChangeEvent, useEffect, useState } from "react"
+import { Link, json, useParams } from "react-router-dom"
 import ParticipantModel from "../../models/ParticipantModel"
 
 const ReservationPageController = () => {
@@ -28,13 +28,46 @@ const ReservationPageController = () => {
 
     // function to set how many Participant input fields to display
     function changeNumberOfParticipants(event : any): void {
-        const value = event.target.value as "" | "value" | undefined;
+        const value = event.target.value as "" | "value";
         setSelectedNumberOfParticipants(value);
         setShowInputsForm(value !== "")
+        const participantsArr : ParticipantModel[] = []
+        for(let i = 0; i < parseInt(value); i++){
+            participantsArr.push(new ParticipantModel(participantsArr.length, "", "", "", ""))
+        }
+
+        setParticipants(participantsArr)
     }
 
-    function submitReservation(event: any): void {
-        event.preventDefault()
+    async function submitReservation(event: any) {
+        // event.preventDefault()
+        // const requestOptions = {
+        //     method : "POST",
+        //     headers : { "Content-Type": "application/json" },
+        //     body : JSON.stringify()
+        // }
+        // const submitReservationResponse = await fetch()
+    }
+
+    function updateParticipantNom(id: number, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+        const participantsCopy = [... participants]
+        
+        participantsCopy[id].nom = event.target.value
+        setParticipants(participantsCopy)
+    }
+
+    function updateParticipantPrenom(id: number, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+        const participantsCopy = [... participants]
+        
+        participantsCopy[id].prenom = event.target.value
+        setParticipants(participantsCopy)
+    }
+
+    function updateParticipantNaissance(id: number, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+        const participantsCopy = [... participants]
+        
+        participantsCopy[id].naissance = event.target.value
+        setParticipants(participantsCopy)
     }
 
     return(
@@ -73,11 +106,11 @@ const ReservationPageController = () => {
                         {showInputsForm && (
                         <>  
                             <h2>Liste des participants</h2>
-                            {[...Array(selectedNumberOfParticipants)].map( value => (
-                            <div className="participants-input-container" key={value}>
-                                <TextField label={`Nom`} variant="outlined" />
-                                <TextField label={`Prenom`} variant="outlined" />
-                                <TextField label={`Date de naissance`} variant="outlined" />
+                            {participants.map( participant => (
+                            <div className="participants-input-container" key={participant.id}>
+                                <TextField label={`Nom`} variant="outlined" value={participant.nom} onChange={(event) => updateParticipantNom(participant.id, event)}/>
+                                <TextField label={`Prenom`} variant="outlined" value={participant.prenom}onChange={(event) => updateParticipantPrenom(participant.id, event)}/>
+                                <TextField label={`Date de naissance`} variant="outlined" value={participant.naissance}onChange={(event) => updateParticipantNaissance(participant.id, event)}/>
                             </div>
                             ))}
                         </>
