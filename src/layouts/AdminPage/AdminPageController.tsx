@@ -17,7 +17,7 @@ interface SallesProps {
 }
 
 const AdminPageController = () => {
-  const [salles, setSalles] = useState<SallesProps[]>();
+  const [salles, setSalles] = useState<SallesProps[] | undefined>();
   //fonction pour récupérer la réservation, les participants et la salle
 
   async function fetchData() {
@@ -40,6 +40,47 @@ const AdminPageController = () => {
     fetchData();
   }, []);
 
+  //modifier le statut de la salle dans la base de données
+  const handleUpdateStatus = async (index: number) => {
+    const updatedSalles = [...salles];
+    const salle = updatedSalles[index];
+    salle.status = !salle.status; // Toggle the status
+
+    try {
+      // Send a request to update the status in the database
+      await fetch(`http://localhost:3000/salles/${salle.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ status: salle.status }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      setSalles(updatedSalles);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  ///Supprimer une salle de la base de données
+  const handleDeleteSalle = async (index: number) => {
+    const updatedSalles = [...salles];
+    const salle = updatedSalles[index];
+
+    try {
+      // Envoyer une requête pour supprimer la salle de la base de données
+      await fetch(`http://localhost:3000/salles/${salle.id}`, {
+        method: "DELETE",
+      });
+
+      // Mettre à jour l'état des salles après la suppression
+      updatedSalles.splice(index, 1);
+      setSalles(updatedSalles);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <Container component="main" maxWidth="md">
@@ -58,15 +99,25 @@ const AdminPageController = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {salles?.map((salle) => (
+              {salles?.map((salle, index) => (
                 <TableRow key={salle.nom}>
                   <TableCell>{salle.nom}</TableCell>
-                  <TableCell>{salle.status ? "Actif" : "Inactif"}</TableCell>
+                  <TableCell>
+                    {salle.status ? "Disponible" : "Indisponible"}
+                  </TableCell>
                   <TableCell align="right">
-                    <Button variant="contained" color="primary">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleUpdateStatus(index)}
+                    >
                       Update
                     </Button>
-                    <Button variant="contained" color="error">
+                    <Button
+                      variant="contained"
+                      color="error"
+                      onClick={() => handleDeleteSalle(index)}
+                    >
                       Delete
                     </Button>
                   </TableCell>
