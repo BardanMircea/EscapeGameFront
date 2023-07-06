@@ -60,41 +60,52 @@ const Header = () => {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            {user === null
-              ? [
+            {user === null ? (
+              <MenuItem
+                key="login"
+                onClick={() => {
+                  handleMenuClose();
+                  navigate("/login");
+                }}
+              >
+                Connexion
+              </MenuItem>
+            ) : (
+              <>
+                {user.role === "admin" && (
                   <MenuItem
-                    key="login"
+                    key="admin"
                     onClick={() => {
                       handleMenuClose();
-                      navigate("/login");
+                      navigate("/admin");
                     }}
                   >
-                    Connexion
-                  </MenuItem>,
-                ]
-              : [
-                  <MenuItem
-                    key="history"
-                    onClick={() => {
-                      handleMenuClose();
-                      navigate("/history");
-                    }}
-                  >
-                    Historique
-                  </MenuItem>,
-                  <MenuItem
-                    key="logout"
-                    onClick={() => {
-                      handleMenuClose();
-                      logout();
-                    }}
-                  >
-                    Déconnexion
-                  </MenuItem>,
-                ]}
+                    Admin
+                  </MenuItem>
+                )}
+                <MenuItem
+                  key="history"
+                  onClick={() => {
+                    handleMenuClose();
+                    navigate("/history");
+                  }}
+                >
+                  Historique
+                </MenuItem>
+                <MenuItem
+                  key="logout"
+                  onClick={() => {
+                    handleMenuClose();
+                    logout();
+                  }}
+                >
+                  Déconnexion
+                </MenuItem>
+              </>
+            )}
           </Menu>
           {/* Login button for normal screens */}
-          {user === null ? ( // If user is not logged in
+          {user === null ? (
             <Button
               color="inherit"
               onClick={() => navigate("/login")}
@@ -103,7 +114,6 @@ const Header = () => {
               Connexion
             </Button>
           ) : (
-            // If user is logged in
             <>
               <Typography
                 variant="h6"
@@ -112,6 +122,17 @@ const Header = () => {
               >
                 Bonjour {user.prenom}
               </Typography>
+              {user.role === "admin" && (
+                <Button
+                  color="inherit"
+                  onClick={() => {
+                    navigate("/admin");
+                  }}
+                  sx={{ display: { xs: "none", sm: "block" } }}
+                >
+                  Admin
+                </Button>
+              )}
               <Button
                 color="inherit"
                 onClick={() => navigate("/history")}

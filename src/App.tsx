@@ -9,7 +9,7 @@ import Layout from "./components/mainLayout";
 
 import ReservationPageController from "./layouts/ReservationPage/ReservationPageController";
 import HistoriquePageController from "./layouts/HistoriquePage/HistoriquePageController";
-
+import AdminPageController from "./layouts/AdminPage/AdminPageController";
 
 function App() {
   return (
@@ -66,7 +66,15 @@ function App() {
 
                 </Layout>
               }
-              />
+            />
+            <Route
+              path="/admin"
+              element={
+                <Layout>
+                  <AdminPageController />
+                </Layout>
+              }
+            />
           </Routes>
         </Router>
       </AuthProvider>

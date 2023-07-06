@@ -1,6 +1,6 @@
 import ConnexionPageView from "./ConnexionPageView";
 import LoginModel from "../../models/LoginModel";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useAuth } from "../../components/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const ConnexionController = () => {
   const { user, login: loginConnexion, logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     // check if no fields are empty and if the provided passwords match
@@ -22,7 +22,10 @@ const ConnexionController = () => {
     }
 
     // build the Login request model
-    const login: LoginModel = new LoginModel(email, mdp);
+    const login: LoginModel = {
+      email,
+      mdp,
+    };
 
     // set the url and the options needed to do the request
     const url = `http://localhost:3000/login`;

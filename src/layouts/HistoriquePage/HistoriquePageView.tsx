@@ -19,7 +19,10 @@ const HistoriquePageView = (props: HistoriqueViewProps) => {
         {resultat.length !== 0 ? (
           <div>
             <h1>Voici vos réservations :</h1>
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div
+              className="card-container"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               {resultat.map((item) => (
                 <Grid item key={item.reservation._id}>
                   <Card
@@ -27,6 +30,11 @@ const HistoriquePageView = (props: HistoriqueViewProps) => {
                     style={{
                       width: "250px",
                       backgroundColor: "rgb(233, 231, 231)",
+                      display:
+                        "grid" /* Utilise une grille pour aligner les éléments internes */,
+                      gridTemplateRows:
+                        "auto auto auto 1fr" /* Répartit l'espace de la carte en 4 rangées */,
+                      gap: "5px" /* Espace entre les éléments de la grille */,
                     }}
                   >
                     <CardMedia
