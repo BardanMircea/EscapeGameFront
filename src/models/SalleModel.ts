@@ -1,4 +1,5 @@
 class SalleModel {
+
     _id : number
     nom : string
     description : string
@@ -17,4 +18,4 @@ class SalleModel {
     }
 }
 
-export default SalleModel
+export default SalleModel;

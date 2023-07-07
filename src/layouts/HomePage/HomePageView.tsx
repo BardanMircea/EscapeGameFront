@@ -1,4 +1,3 @@
-
 import {
   Grid,
   Card,
@@ -10,7 +9,6 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import SalleModel from "../../models/SalleModel";
-
 
 interface HomePageViewProps {
   salles: SalleModel[];
@@ -46,37 +44,36 @@ const HomePageView = (props: HomePageViewProps) => {
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <Card sx={{ width: 400, maxWidth: "100%" }}>
-              
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={
-                    salle.img
-                      ? salle.img
-                      : "https://escapetheroom.com/wp-content/uploads/2018/11/Escape-the-room-OG.jpg"
-                  }
-                  alt="escape room img"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {salle.nom}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: "vertical",
-                      height: 35,
-                    }}
-                  >
-                    {salle.description}
-                  </Typography>
-                </CardContent>
-             
+              <CardMedia
+                component="img"
+                height="140"
+                image={
+                  salle.img
+                    ? salle.img
+                    : "https://escapetheroom.com/wp-content/uploads/2018/11/Escape-the-room-OG.jpg"
+                }
+                alt="escape room img"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {salle.nom}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: "vertical",
+                    height: 35,
+                  }}
+                >
+                  {salle.description}
+                </Typography>
+              </CardContent>
+
               <CardActions>
                 <Button
                   component={Link}
