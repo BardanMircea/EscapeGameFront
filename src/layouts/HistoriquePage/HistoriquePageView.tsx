@@ -41,7 +41,7 @@ const HistoriquePageView = (props: HistoriqueViewProps) => {
                       component="img"
                       height="200"
                       image={
-                        item.salle.img
+                        item.salle?.img
                           ? item.salle.img
                           : "https://escapetheroom.com/wp-content/uploads/2018/11/Escape-the-room-OG.jpg"
                       }
@@ -52,7 +52,7 @@ const HistoriquePageView = (props: HistoriqueViewProps) => {
                       component="div"
                       style={{ marginLeft: "5px" }}
                     >
-                      {item.salle.nom}
+                      {item.salle?.nom}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -76,7 +76,7 @@ const HistoriquePageView = (props: HistoriqueViewProps) => {
                       <b>Participants : </b>
                     </Typography>
                     <ul style={{ marginTop: 0 }}>
-                      {item.participants.map((participant) => (
+                      {item.participants?.map((participant) => (
                         <li key={participant._id}>
                           {participant.nom} {participant.prenom}
                         </li>

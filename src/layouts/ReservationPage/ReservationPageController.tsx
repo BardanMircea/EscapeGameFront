@@ -7,11 +7,15 @@ import ReservationModel from "../../models/ReservationModel"
 const ReservationPageController = () => {
     // get the salle_id passed as a parameter from the details page when clicking on a time window(creneau horaire)
     const {salle_id, salle_nom, salle_capacite, salle_img, jour, creneau} = useParams()
+
+    // decode the encoded image 
+    const decodedImg = salle_img ? salle_img : "https://escapetheroom.com/wp-content/uploads/2018/11/Escape-the-room-OG.jpg";
     const navigate = useNavigate()
 
     const parts = salle_capacite?.split("-")    
     const minNumberPart : number = parts ? parseInt(parts[0]) : 0
     const maxNumberPart : number = parts ? parseInt(parts[1]) : 0
+    // let isOfLegalAge : boolean =  true
     const values : number[] = populateValues(minNumberPart, maxNumberPart)
 
     const [selectedNumberOfParticipants, setSelectedNumberOfParticipants] = useState< | "" | "value" | undefined>("")
@@ -20,7 +24,7 @@ const ReservationPageController = () => {
     let isAddSuccessful = false;
     
 
-    // function to pupulate an array with numbers ranging between the minimum and the maximum capacity of the room
+    // function to populate an array with numbers ranging between the minimum and the maximum capacity of the room
     function populateValues(min : number, max: number): number[] {
         const result = []
         for(let i = min; i <= max; i++){
@@ -38,9 +42,34 @@ const ReservationPageController = () => {
         for(let i = 0; i < parseInt(value); i++){
             participantsArr.push(new ParticipantModel(participantsArr.length, "", "", "", ""))
         }
+        console.log(participantsArr)
 
         setParticipants(participantsArr)
     }
+
+    //check if at least one Participant is of legal age
+    // function isParticipantMajorityVerified() {
+    //     const today = new Date();
+
+    //     participants.forEach((participant) => {
+    //         const dateOfBirth = new Date(participant.naissance);
+    //         const age = today.getFullYear() - dateOfBirth.getFullYear();
+
+    //         // Compare the age by subtracting the birth year from the current year
+    //         console.log(age)
+    //         if(isNaN(age)){
+    //             return false
+    //         }
+
+    //         if (age >= 18) {
+    //         return true; // At least one participant is of legal age
+    //         }
+            
+    //     })
+
+    //     // no participant is of legal age
+    //     return false
+    // }
 
     // check if there are any required fields missing, if so, return
     function isMissingRequiredFields() {
@@ -55,8 +84,14 @@ const ReservationPageController = () => {
         return result
     }
 
+
     async function submitReservation(event: any) {
         event.preventDefault()
+
+        // if(!isParticipantMajorityVerified()){
+        //     isOfLegalAge = false
+        //     return
+        // }
 
         // get the user id from localStorage
         let idUtilisateur= "";
@@ -100,7 +135,7 @@ const ReservationPageController = () => {
 
         // assign the reservation id to each participant before sending the participants to the back end 
         // const participantsCopy = [... participants]
-        const submittedParticipants : any  = []
+        const submittedParticipants : any[]  = []
         participants.forEach(participant => {
             submittedParticipants.push({
                 nom : participant.nom,
@@ -130,6 +165,7 @@ const ReservationPageController = () => {
         isAddSuccessful = true;
     }
 
+    // { A refactoriser ! ============
     function updateParticipantNom(id: number, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
         const participantsCopy = [... participants]
         
@@ -152,12 +188,14 @@ const ReservationPageController = () => {
         setParticipants(participantsCopy)
     }
 
+    // ============= }
+
     return(
         <>
             <h1>{ <span style={{color: "rgb(124, 31, 124)"}}>{salle_nom}</span>}  Escape Room</h1>
             <div className="card-details-container">
                 <Card sx={{ width: 1000, maxWidth: 1200, maxHeight: 10000, mb: 5 }}>
-                    <CardMedia component="img" height="500" image={salle_img || "https://escapetheroom.com/wp-content/uploads/2018/11/Escape-the-room-OG.jpg"} alt="escape room img" />
+                    <CardMedia component="img" height="500" image= {decodedImg} alt="escape room img" />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                         {salle_nom}
@@ -198,6 +236,11 @@ const ReservationPageController = () => {
                         </>
                         )}
                     </CardContent>
+                    {/* {!isOfLegalAge && (
+                         <Alert severity="error">
+                             Au moin un des participans doit être majeur !
+                        </Alert>
+                    )} */}
                     <CardActions sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
                         {!isMissingRequiredFields() && <Button component={Link} to="#" size="small" color="primary" onClick={(event) => {submitReservation(event); true? navigate("/history") : navigate("/errorPage")} }>
                         Resérver

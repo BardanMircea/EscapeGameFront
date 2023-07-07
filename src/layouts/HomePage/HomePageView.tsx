@@ -35,7 +35,7 @@ const HomePageView = (props: HomePageViewProps) => {
         }}
       >
         {salles.map((salle) => (
-          <Grid
+          salle.status && <Grid
             item
             xs={12}
             sm={4}
