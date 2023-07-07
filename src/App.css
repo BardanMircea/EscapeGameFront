@@ -1,9 +1,7 @@
-
 .participants-input-container {
   display: flex;
   justify-content: center;
 }
-
 
 .week-container {
   display: flex;
@@ -89,6 +87,7 @@ footer {
 .card-container {
   display: flex;
   justify-content: center;
+  flex-flow: wrap;
   align-items: stretch; /* Permet aux éléments de la grille de s'étendre sur la hauteur totale */
 }
 /* .table-container {

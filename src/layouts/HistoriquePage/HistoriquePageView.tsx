@@ -24,7 +24,11 @@ const HistoriquePageView = (props: HistoriqueViewProps) => {
               style={{ display: "flex", justifyContent: "center" }}
             >
               {resultat.map((item) => (
-                <Grid item key={item.reservation._id}>
+                <Grid
+                  item
+                  key={item.reservation._id}
+                  style={{ marginBottom: "20px" }}
+                >
                   <Card
                     className="ReservCard"
                     style={{
