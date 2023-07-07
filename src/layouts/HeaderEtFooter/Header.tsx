@@ -39,8 +39,18 @@ const Header = () => {
               underline="none"
               color="inherit"
               onClick={() => navigate("/")}
+              sx={{
+                display: "inline-block",
+                "& img": {
+                  width: "100px",
+                  height: "auto",
+                },
+              }}
             >
-              Escape Game
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/54/Logo-escapegame-blanc.png"
+                alt="Logo Escape Game"
+              />
             </Link>
           </Typography>
           {/* Menu icon for small screens */}
