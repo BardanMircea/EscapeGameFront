@@ -236,7 +236,7 @@ const ReservationPageController = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {salle_nom}style="margin-bottom: 20px;"
+              {salle_nom}
             </Typography>
             <p style={{ fontSize: 20 }}>
               Vous allez réserver la salle{" "}
